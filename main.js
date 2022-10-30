@@ -1,25 +1,28 @@
-const btn = document.getElementById("btn");
-// btn.addEventListener("click", checkInput);
-if(btn){
-    btn.addEventListener('click', checkInput);
-  }
+const gettingData = fetch("http://localhost:3000/getusers")
+.then((res) => {return res.json()})
+.then((res) => {
+    console.log(res);
+    let users="";
+    res.map((item) => {
+         (users += `  <table>
+         <tr>
+         <th>first name</th>
+         <th>last name</th>
+         <th>phone</th>
+         <th>email</th>
+       </tr>
+         <tr>
+           <td>${item.firstName}</td>
+           <td>${item.lastName}</td>
+           <td>${item.phone}</td>
+           <td>${item.email}</td>
+         </tr>
+       </table>`);
+       document.getElementById("container").innerHTML = users;
+    });
+})
+.catch((err) => console.log(err));
 
-let users;
- async function checkInput(){
-     await fetch("http://localhost:3000/getusers")
-        .then((res) => res.json())
-        .then((res) => {
-            
-            res.map((item)=>{
-               users += `<ul usersList>
-                <li>${item.email}</li>
-                <li>${item.phone}</li>
-                <li>${item.firstName}</li>
-                <li>${item.lastName}</li>
-                </ul>`
-            })
-            document.getElementById("usersList").innerHTML = users;
-        })
-        .catch((err) => console.log(err));
-}
-console.log(users);
+window.onload = async () => {
+    let someData = await gettingData;
+};

@@ -36,19 +36,20 @@ app.get("/style.css", function (req, res) {
 app.get("/main.js", function (req, res) {
 	res.sendFile(__dirname + "/" + "main.js");
 });
-app.get("/users.html", function (req, res) {
-	res.sendFile(__dirname + "/" + "users.html");
-});
 
 app.post("/", async (req, res) => {
-	let newUser = await new userModel({
-		firstName: req.body.first_name,
-		lastName: req.body.last_name,
-		phone: req.body.phone,
-		email: req.body.email,
-	});
-	await newUser.save();
-	res.redirect("/users.html");
+    try{
+        let newUser = await new userModel({
+            firstName: req.body.first_name,
+            lastName: req.body.last_name,
+            phone: req.body.phone,
+            email: req.body.email,
+        });
+        await newUser.save();
+    }catch(err){
+        res.status(400);
+    }
+	res.redirect("/approval.html");
 });
 app.listen(3000, () => {
 	console.log("server is running");
