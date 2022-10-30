@@ -24,6 +24,7 @@ body {
 	backdrop-filter: blur(5px);
 	-webkit-backdrop-filter: blur(5px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
+	position: relative;
 }
 input {
 	/* border:none none 1px none; */
@@ -40,7 +41,11 @@ input {
 #btn {
 	height: 10%;
 	border: none;
+	border-radius: 10px;
 	background-color: rgb(102, 241, 102);
+	position: absolute;
+	margin-top: 530px;
+	width: 150px;
 }
 label {
 	font-weight: 400;

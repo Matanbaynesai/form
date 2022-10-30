@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Document</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("_6YQox5SHEiYQ14wb");
+        })();
+    </script>
 </head>
+
 <body>
-    <form id="form" method="post" action="/">
-        <label >First Name</label>
+    <form id="form">
+        <label>First Name</label>
         <input required id="firstName" name="first_name" type="text">
-        <label >Last Name</label>
+        <label>Last Name</label>
         <input required id="lastName" name="last_name" type="text">
-        <label >Phone</label>
+        <label>Phone</label>
         <input required id="phone" name="phone" type="number">
-        <label >Email</label>
+        <label>Email</label>
         <input required id="email" name="email" type="email">
-        <button id="btn" type="submit">Send</button>
     </form>
+    <button id="btn">Send</button>
     </div>
 </body>
 <script src="/main.js"></script>
+
 </html>
